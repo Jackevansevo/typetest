@@ -1,0 +1,29 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "typetest game frontend",
+  "main": "elm.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jackevansevo/elm-typetest.git"
+  },
+  "author": "Jack Evans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jackevansevo/elm-typetest/issues"
+  },
+  "homepage": "https://github.com/Jackevansevo/elm-typetest#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "nes.css": "^1.0.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "elm-hot": "^1.0.1",
+    "node-elm-compiler": "^5.0.1"
+  }
+}

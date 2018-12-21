@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  backend:
+    container_name: typetest-backend
+    build: 
+      context: backend/
+    ports:
+     - "5000:5000"
+  frontend:
+    container_name: typetest-frontend
+    build: 
+      context: frontend/
+    ports:
+     - "8080:8080"

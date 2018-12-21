@@ -1,0 +1,101 @@
+body {
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#textInput {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+#container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback {
+  word-wrap: break-word;
+  word-break: break-word;
+  width: 80vw;
+  line-height: 150%;
+  margin-bottom: 1em;
+}
+
+.wpmBar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #e6e6e6;
+  appearance: none;
+  border: none;
+}
+
+progress::-webkit-progress-value {
+  background-color: #209cee;
+  box-shadow: inset -4px -4px #006bb3;
+}
+
+progress::-moz-progress-bar {
+  background-color: #209cee;
+  box-shadow: inset -4px -4px #006bb3;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  box-shadow: inset -4px -4px #adafbc;
+  border-color: #212529;
+  border-right-color: rgb(33, 37, 41);
+  border-left-color: rgb(33, 37, 41);
+  border-style: solid;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-width: 4px;
+  border-right-width: 4px;
+  border-left-width: 4px;
+  height: 20px;
+}
+
+@keyframes blink {
+  50% {
+    color: transparent;
+  }
+}
+.loader__dot {
+  animation: 1s blink infinite;
+}
+.loader__dot:nth-child(2) {
+  animation-delay: 250ms;
+}
+.loader__dot:nth-child(3) {
+  animation-delay: 500ms;
+}
