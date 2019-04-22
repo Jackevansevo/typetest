@@ -1,6 +1,11 @@
 import urllib.request
+from urllib.parse import urljoin
 
-url = "https://ocw.mit.edu/ans7870/6/6.006/s08/lecturenotes/files/t8.shakespeare.txt"
+
+url = urljoin(
+    "https://ocw.mit.edu/ans7870/6/6.006/s08/lecturenotes/files/",
+    "t8.shakespeare.txt",
+)
 
 
 def entrace_scene(line):

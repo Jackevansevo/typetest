@@ -281,17 +281,6 @@ homeView model =
                                     , span []
                                         [ text "Shakespeare" ]
                                     ]
-                                , label [ style "display" "block", style "margin-bottom" "1.2rem" ]
-                                    [ input
-                                        [ class "nes-radio"
-                                        , name "source"
-                                        , type_ "radio"
-                                        , onClick (Msgs.UpdateSource "random")
-                                        ]
-                                        []
-                                    , span []
-                                        [ text "Random" ]
-                                    ]
                                 ]
                             ]
                         ]

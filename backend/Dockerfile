@@ -1,7 +1,7 @@
 FROM python:alpine
 
 ENV FLASK_ENV=development
-ENV FLASK_APP=app.py
+ENV FLASK_APP=marky
 
 EXPOSE 5000/tcp
 

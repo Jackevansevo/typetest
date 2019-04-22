@@ -26,7 +26,7 @@ def random():
 
 @bp.route("/generate")
 def words():
-    nums_param = int(request.args.get("n", 5))
+    nums_param = int(request.args.get("n", 2))
     source_param = request.args.get("source", "shakespeare")
     source = current_app.config.get("sources").get(source_param)
     words = source.generate(nums_param)

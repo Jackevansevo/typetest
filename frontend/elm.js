@@ -6525,7 +6525,7 @@ var elm$time$Time$Zone = F2(
 var elm$time$Time$utc = A2(elm$time$Time$Zone, 0, _List_Nil);
 var author$project$Model$initialModel = F3(
 	function (url, key, route) {
-		return {key: key, route: route, showSettings: false, source: 'shakespeare', status: author$project$Model$NotStarted, typed: _List_Nil, url: url, words: author$project$Model$Loading, zone: elm$time$Time$utc};
+		return {key: key, route: route, showSettings: false, source: 'trump', status: author$project$Model$NotStarted, typed: _List_Nil, url: url, words: author$project$Model$Loading, zone: elm$time$Time$utc};
 	});
 var author$project$Routing$NotFound = {$: 'NotFound'};
 var author$project$Routing$About = {$: 'About'};
@@ -11116,9 +11116,23 @@ var author$project$Update$update = F2(
 							elm$core$String$split,
 							' ',
 							elm$core$String$fromList(model.typed)));
+					var numErrors = elm$core$List$length(
+						A2(
+							elm$core$List$filter,
+							elm$core$Basics$identity,
+							A3(
+								elm$core$List$map2,
+								F2(
+									function (x, y) {
+										return !_Utils_eq(x, y);
+									}),
+								game.words,
+								model.typed)));
 					var elapsedTime = elm$time$Time$posixToMillis(time) - elm$time$Time$posixToMillis(game.startTime);
 					var inMinutes = elapsedTime / 60000;
-					var wpm = wordCount / inMinutes;
+					var grossWPM = ((elm$core$List$length(model.typed) / 5) | 0) / inMinutes;
+					var netEPM = numErrors / inMinutes;
+					var netWPM = grossWPM - netEPM;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
@@ -11126,7 +11140,7 @@ var author$project$Update$update = F2(
 								status: author$project$Model$InProgress(
 									_Utils_update(
 										game,
-										{currentWPM: wpm}))
+										{currentWPM: netWPM}))
 							}),
 						elm$core$Platform$Cmd$none);
 				} else {
@@ -12296,34 +12310,6 @@ var author$project$View$homeView = function (model) {
 												_List_fromArray(
 													[
 														elm$html$Html$text('Shakespeare')
-													]))
-											])),
-										A2(
-										elm$html$Html$label,
-										_List_fromArray(
-											[
-												A2(elm$html$Html$Attributes$style, 'display', 'block'),
-												A2(elm$html$Html$Attributes$style, 'margin-bottom', '1.2rem')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('nes-radio'),
-														elm$html$Html$Attributes$name('source'),
-														elm$html$Html$Attributes$type_('radio'),
-														elm$html$Html$Events$onClick(
-														author$project$Msgs$UpdateSource('random'))
-													]),
-												_List_Nil),
-												A2(
-												elm$html$Html$span,
-												_List_Nil,
-												_List_fromArray(
-													[
-														elm$html$Html$text('Random')
 													]))
 											]))
 									]))

@@ -122,10 +122,19 @@ update msg model =
                         inMinutes =
                             toFloat elapsedTime / 60000
 
-                        wpm =
-                            toFloat wordCount / inMinutes
+                        numErrors =
+                            List.length (List.filter identity (List.map2 (\x y -> x /= y) game.words model.typed))
+
+                        netEPM =
+                            toFloat numErrors / inMinutes
+
+                        grossWPM =
+                            toFloat (List.length model.typed // 5) / inMinutes
+
+                        netWPM =
+                            grossWPM - netEPM
                     in
-                    ( { model | status = InProgress { game | currentWPM = wpm } }, Cmd.none )
+                    ( { model | status = InProgress { game | currentWPM = netWPM } }, Cmd.none )
 
                 _ ->
                     ( model, Cmd.none )
